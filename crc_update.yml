@@ -9,7 +9,7 @@
       register: installed_crc_version
 
     - name: Update CRC executable (block)
-      when: installed_crc_version['stderr'] is search("A new version") or installed_crc_version is search("NOT INSTALLED")
+      when: (installed_crc_version['stderr'] is search("A new version")) or (installed_crc_version['stdout'] is search("NOT INSTALLED"))
       block:
 
         - name: Update CRC executable
