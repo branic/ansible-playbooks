@@ -1,0 +1,22 @@
+---
+ansible-navigator:
+  editor:
+    command: code -g {filename}:{line_number}
+    console: false
+  playbook-artifact:
+    enable: false
+    save-as: "{playbook_dir}/run-artifacts/{playbook_name}-artifact-{time_stamp}.json"
+  execution-environment:
+    # image: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.13
+    image: localhost/brant_ee
+    pull:
+      policy: never
+    # volume-mounts:
+    #   - dest: /home/runner/.ansible/collections/ansible_collections/redhat_cop/aap_utilities
+    #     # options: Z
+    #     src: /home/bevans/git-repos/my_forks/ansible_collections/redhat_cop/aap_utilities
+  ansible:
+    inventory:
+      entries:
+        - "./inventory.ini"
+    # cmdline: "-vv"

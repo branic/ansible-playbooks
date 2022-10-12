@@ -1,0 +1,3 @@
+*.retry
+*.log
+check_before_commiting/*

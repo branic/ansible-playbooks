@@ -1,0 +1,70 @@
+- name: Update CRC
+  hosts: laptop
+
+  tasks:
+    - name: Check if CRC update available
+      ansible.builtin.shell:
+        cmd: crc version 2>/dev/null || echo "NOT INSTALLED"
+      changed_when: false
+      register: installed_crc_version
+
+    - name: Update CRC executable (block)
+      when: installed_crc_version['stderr'] is search("A new version") or installed_crc_version is search("NOT INSTALLED")
+      block:
+
+        - name: Update CRC executable
+          ansible.builtin.unarchive:
+            src: https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
+            dest: "{{ ansible_user_dir }}/.local/bin"
+            remote_src: true
+            include:
+              - "*crc"
+            extra_opts:
+              - "--strip-components=1"
+
+        - name: Remove previous CRC VM
+          ansible.builtin.expect:
+            command: crc delete
+            responses:
+              (.*)delete the instance(.*): "y"
+          register: crc_vm_deleted
+          changed_when: crc_vm_deleted['stdout'] is search("Deleted the instance")
+          failed_when: crc_vm_deleted['rc'] not in [0, 1]
+
+        - name: Setup CRC
+          ansible.builtin.command:
+            cmd: crc setup
+          register: crc_vm_setup
+          changed_when: crc_vm_setup['stderr'] is regex("Getting|Installing|Downloading|Uncompressing", multiline=true, ignorecase=true)
+
+        - name: Determine bundle version
+          ansible.builtin.set_fact:
+            bundle_version: "{{ crc_vm_setup['stderr'] | regex_replace('(?ms)^.*Checking .+/(crc_.+).crcbundle exists.*$', '\\1') }}"
+
+        - name: Determine bundles path
+          ansible.builtin.set_fact:
+            bundles_path: "{{ crc_vm_setup['stderr'] | regex_replace('(?ms)^.*Checking if (/.+)/crc_.+.crcbundle exists.*$', '\\1') }}"
+
+        - name: Find cached bundles
+          ansible.builtin.find:
+            paths:
+              - "{{ bundles_path }}"
+            file_type: any
+          register: crc_bundles
+
+        - name: Remove old bundles
+          ansible.builtin.file:
+            path: "{{ bundle.path }}"
+            state: absent
+          loop: "{{ crc_bundles['files'] }}"
+          loop_control:
+            loop_var: "bundle"
+            label: "{{ bundle.path }}"
+          when: bundle.path is not search(bundle_version)
+
+        - name: Copy oc command to .local/bin
+          ansible.builtin.copy:
+            src: "{{ bundles_path }}/{{ bundle_version }}/oc"
+            dest: "{{ ansible_user_dir }}/.local/bin/oc"
+            remote_src: true
+            mode: 0755
