@@ -9,14 +9,14 @@ ansible-navigator:
   execution-environment:
     # image: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.13
     image: localhost/brant_ee
-    pull:
-      policy: never
     # volume-mounts:
     #   - dest: /home/runner/.ansible/collections/ansible_collections/redhat_cop/aap_utilities
     #     # options: Z
     #     src: /home/bevans/git-repos/my_forks/ansible_collections/redhat_cop/aap_utilities
+    pull:
+      policy: never
   ansible:
+    # cmdline: "-vv"
     inventory:
       entries:
         - "./inventory.ini"
-    # cmdline: "-vv"
