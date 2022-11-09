@@ -5,7 +5,7 @@
   tasks:
     - name: Check if CRC update available
       ansible.builtin.shell:
-        cmd: crc version 2>/dev/null || echo "NOT INSTALLED"
+        cmd: crc version || echo "NOT INSTALLED"
       changed_when: false
       register: installed_crc_version
 

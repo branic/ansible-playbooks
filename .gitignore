@@ -1,3 +1,6 @@
 *.retry
 *.log
 check_before_commiting/*
+
+collections/*
+!collections/requirements.yml
