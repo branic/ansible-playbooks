@@ -16,7 +16,7 @@
       register: file_check
 
     - name: Exclude users from login screen
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: "{{ item.stat.path }}"
         state: present
         regexp: '^SystemAccount='
