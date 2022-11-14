@@ -1,6 +1,6 @@
 ---
 # This workflow action will run pre-commit, which will execute ansible and yaml linting
-# See .pre-commit-config.yml for what hooks are executed
+# See .pre-commit-config.yaml for what hooks are executed
 name: Yaml and Ansible Lint
 
 on:  # noqa yaml[truthy]
@@ -14,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
-      - name: Upgrade Ansible
-        run: |
-          sudo apt install software-properties-common
-          pip install --upgrade ansible
+      # - name: Upgrade Ansible
+      #   run: |
+      #     sudo apt install software-properties-common
+      #     pip install --upgrade ansible
       - uses: pre-commit/action@v3.0.0
