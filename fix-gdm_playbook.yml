@@ -1,0 +1,27 @@
+---
+- name: Fix GDM Login Screen
+  hosts: all
+  gather_facts: true
+  become: true
+
+  vars:
+    non_gdm_users:
+      - satuser
+
+  tasks:
+    - name: Check for users GDM files
+      ansible.builtin.stat:
+        path: "/var/lib/AccountsService/users/{{ item }}"
+      loop: "{{ non_gdm_users }}"
+      register: file_check
+
+    - name: Exclude users from login screen
+      ansible.builtin.lineinfile:
+        path: "{{ item.stat.path }}"
+        state: present
+        regexp: '^SystemAccount='
+        line: 'SystemAccount=true'
+      when: item.stat.exists
+      loop: "{{ file_check.results }}"
+      loop_control:
+        label: "{{ item.stat.path }}"
