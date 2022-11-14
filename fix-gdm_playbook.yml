@@ -16,12 +16,12 @@
       register: file_check
 
     - name: Exclude users from login screen
-      when: item.stat.exists
-      ansible.builtin.lineinfile:
+      lineinfile:
         path: "{{ item.stat.path }}"
         state: present
         regexp: '^SystemAccount='
         line: 'SystemAccount=true'
+      when: item.stat.exists
       loop: "{{ file_check.results }}"
       loop_control:
         label: "{{ item.stat.path }}"
