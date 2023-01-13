@@ -62,10 +62,3 @@
             loop_var: "bundle"
             label: "{{ bundle.path }}"
           when: bundle.path is not search(bundle_version)
-
-        - name: Copy oc command to .local/bin
-          ansible.builtin.copy:
-            src: "{{ bundles_path }}/{{ bundle_version }}/oc"
-            dest: "{{ ansible_user_dir }}/.local/bin/oc"
-            remote_src: true
-            mode: 0755
