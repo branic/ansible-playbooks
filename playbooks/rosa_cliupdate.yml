@@ -1,47 +1,9 @@
 ---
-- name: Update ROSA components
+- name: Update Cloud CLI components
   hosts: laptop
   gather_facts: false
 
   tasks:
-    - name: Gather minimal facts
-      ansible.builtin.setup:
-        gather_subset:
-          - "!all"
-
-    - name: Update ROSA CLI executable
-      ansible.builtin.unarchive:
-        src: https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux.tar.gz
-        dest: "{{ ansible_user_dir }}/.local/bin"
-        remote_src: true
-        include:
-          - "rosa"
-
-    - name: Add rosa command-line completion to .bashrc
-      ansible.builtin.lineinfile:
-        path: "{{ ansible_user_dir }}/.bashrc"
-        line: source <(rosa completion)
-
-    - name: Create temporary directory
-      ansible.builtin.tempfile:
-        state: directory
-      register: aws_temp_dir
-
-    # See https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
-    - name: Update the AWS CLI executable
-      ansible.builtin.unarchive:
-        src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
-        dest: "{{ aws_temp_dir['path'] }}"
-        remote_src: true
-
-    - name: Update AWS CLI
-      ansible.builtin.command:
-        cmd: ./aws/install -i {{ ansible_user_dir }}/.local/aws-cli -b {{ ansible_user_dir }}/.local/bin --update
-        chdir: "{{ aws_temp_dir['path'] }}"
-      changed_when: true
-
-    - name: Remove temporary directory
-      ansible.builtin.file:
-        path: "{{ aws_temp_dir['path'] }}"
-        state: absent
-      when: aws_temp_dir['path'] is defined
+    - name: Include Install CLIs role
+      ansible.builtin.include_role:
+        name: install_cloud_clis
