@@ -62,3 +62,8 @@
             loop_var: "bundle"
             label: "{{ bundle.path }}"
           when: bundle.path is not search(bundle_version)
+
+    - name: Add crc command-line completion to .bashrc
+      ansible.builtin.lineinfile:
+        path: "{{ ansible_user_dir }}/.bashrc"
+        line: source <(crc completion bash)
