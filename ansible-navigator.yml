@@ -8,7 +8,7 @@ ansible-navigator:
     save-as: "{playbook_dir}/run-artifacts/{playbook_name}-artifact-{time_stamp}.json"
   execution-environment:
     # image: registry.redhat.io/ansible-automation-platform/ee-minimal-rhel8:2.13
-    image: localhost/brant_ee
+    image: quay.io/branic/ansible_ee:1.1
     # volume-mounts:
     #   - dest: /home/runner/.ansible/collections/ansible_collections/redhat_cop/aap_utilities
     #     # options: Z
