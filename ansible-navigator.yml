@@ -14,7 +14,7 @@ ansible-navigator:
     #     # options: Z
     #     src: /home/bevans/git-repos/my_forks/ansible_collections/redhat_cop/aap_utilities
     pull:
-      policy: never
+      policy: missing
   ansible:
     # cmdline: "-vv"
     inventory:
