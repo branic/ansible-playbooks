@@ -30,7 +30,7 @@
           ansible.builtin.set_fact:
             installed_crc_ver: "{{ crc_ver_installed_result.stdout | regex_replace('(?ms)^CRC version: ((?:\\d+\\.?){1,3}).*$', '\\1') }}"
 
-    - name: Display AWS CLI version info
+    - name: Display CRC version info
       ansible.builtin.debug:
         msg: |
           [

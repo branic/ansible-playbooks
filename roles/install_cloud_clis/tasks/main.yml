@@ -1,7 +1,7 @@
 ---
 # tasks file for install_clis
 
-- name: Gather minimal facts
+- name: Gather needed facts
   ansible.builtin.setup:
     gather_subset:
       - "!all"

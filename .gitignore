@@ -1,6 +1,15 @@
 *.retry
 *.log
-check_before_commiting/*
+check_before_commiting
 
 collections/*
 !collections/requirements.yml
+
+# Temporary ignores
+roles/kvm_vm_provision
+roles/v4l2loopback
+playbooks/test_vm.yml
+playbooks/v4l2loopback_update.yml
+
+# Testing ignores
+playbooks/test_play.yml
