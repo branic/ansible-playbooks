@@ -30,7 +30,7 @@
         create: true
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
       with_items: "{{ src_interfaces | reject('match', '^.*\\..*$') | list }}"
 
 
@@ -51,7 +51,7 @@
             dest: "{{ item.stat.path | replace(src_prefix, dst_prefix) }}"
             owner: root
             group: root
-            mode: 0600
+            mode: "0600"
           with_items: "{{ nic_result.results }}"
           when: item.stat.exists
           loop_control:
@@ -84,7 +84,7 @@
             dest: "{{ item.stat.path }}.bak"
             owner: root
             group: root
-            mode: 0600
+            mode: "0600"
           with_items: "{{ nic_result.results }}"
           when: item.stat.exists
           loop_control:
@@ -117,7 +117,7 @@
             dest: "{{ item.stat.path | replace(src_prefix, dst_prefix) }}"
             owner: root
             group: root
-            mode: 0600
+            mode: "0600"
           with_items: "{{ route_result.results }}"
           when: item.stat.exists
           loop_control:
@@ -140,7 +140,7 @@
             dest: "{{ item.stat.path }}.bak"
             owner: root
             group: root
-            mode: 0600
+            mode: "0600"
           with_items: "{{ route_result.results }}"
           when: item.stat.exists
           loop_control:
