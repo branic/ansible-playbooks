@@ -1,5 +1,7 @@
 # Ansible Playbooks
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/branic/ansible-playbooks/main.svg)](https://results.pre-commit.ci/latest/github/branic/ansible-playbooks/main)
+
 These are Ansible playbooks that I use or have used in the past.
 They may work or they may not. (They most likely did at one point in time.)
 
