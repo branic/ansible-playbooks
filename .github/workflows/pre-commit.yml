@@ -8,16 +8,20 @@ on:  # noqa yaml[truthy]
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
-      # - name: Upgrade Ansible
-      #   run: |
-      #     sudo apt install software-properties-common
-      #     pip install --upgrade ansible
+          python-version: '3.12'
       - uses: pre-commit/action@v3.0.1
