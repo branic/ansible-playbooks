@@ -1,0 +1,62 @@
+---
+user_config_dconf_settings:
+  - key: /org/gnome/shell/window-switcher/behavior/current-workspace-only
+    value: "true"
+  - key: /org/gnome/shell/app-switcher/behavior/current-workspace-only
+    value: "true"
+  - key: /org/gnome/software/download-updates
+    value: "false"
+  - key: /org/gnome/desktop/interface/show-battery-percentage
+    value: "true"
+  - key: /org/gnome/mutter/auto-maximize
+    value: "false"
+  - key: /org/gnome/mutter/dynamic-workspaces
+    value: "false"
+  - key: /org/gnome/mutter/workspaces-only-on-primary
+    value: "false"
+  - key: /org/gnome/mutter/overlay-key
+    value: "'Super_L'"
+  - key: /org/gnome/clocks/world-clocks
+    value: "{{ world_clock_locations | branic.system_management.to_gnome_clocks }}"
+  - key: /org/gnome/shell/world-clocks/locations
+    value: "{{ world_clock_locations | branic.system_management.to_gnome_clocks(shell=true) }}"
+  - key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
+    value: "true"
+  - key: /org/gnome/desktop/peripherals/touchpad/two-finger-scrolling-enabled
+    value: "true"
+  - key: /org/gnome/desktop/privacy/remove-old-temp-files
+    value: "true"
+  - key: /org/gnome/desktop/privacy/remove-old-trash-files
+    value: "false"
+  - key: /org/gnome/desktop/wm/preferences/num-workspaces
+    value: "5"
+  - key: /org/gnome/desktop/wm/preferences/action-middle-click-titlebar
+    value: "'minimize'"
+  - key: /org/gnome/desktop/wm/preferences/button-layout
+    value: "'appmenu:minimize,maximize,close'"
+  - key: /org/gnome/desktop/wm/keybindings/move-to-workspace-2
+    value: "['<Shift><Super>KP_2']"
+  - key: /org/gnome/desktop/wm/keybindings/move-to-workspace-3
+    value: "['<Shift><Super>KP_3']"
+  - key: /org/gnome/desktop/wm/keybindings/move-to-workspace-4
+    value: "['<Shift><Super>KP_4']"
+  - key: /org/gnome/desktop/wm/keybindings/move-to-workspace-5
+    value: "['<Shift><Super>KP_5']"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-1
+    value: "['<Super>Home']"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-2
+    value: "['<Super>KP_2']"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-3
+    value: "['<Super>KP_3']"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-4
+    value: "['<Super>KP_4']"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-5
+    value: "['<Super>KP_5']"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-left
+    value: "@as []"
+  - key: /org/gnome/desktop/wm/keybindings/switch-to-workspace-right
+    value: "@as []"
+  - key: /org/gnome/desktop/wm/keybindings/move-to-workspace-left
+    value: "@as []"
+  - key: /org/gnome/desktop/wm/keybindings/move-to-workspace-right
+    value: "@as []"

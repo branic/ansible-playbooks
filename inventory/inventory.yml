@@ -7,5 +7,6 @@ all:
   children:
     laptop:
       hosts:
-        bevans-thinkpadp1gen7.rmtusaz.csb:
+        csb-p1g7:
+          ansible_host: bevans-thinkpadp1gen7.rmtusaz.csb
           ansible_user: bevans

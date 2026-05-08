@@ -1,0 +1,10 @@
+---
+openshift_local_crc_version: "2.51.0"
+openshift_local_crc_config:
+  preset: openshift
+  consent-telemetry: "yes"
+  cpus: 6
+  disk-size: 200
+  memory: 20480
+  persistent-volume-size: 50
+  pull-secret-file: "{{ crc_pull_secret_file | default(ansible_facts['user_dir'] + '/Documents/crc-pull-secret.json') }}"

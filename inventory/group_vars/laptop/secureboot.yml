@@ -1,0 +1,2 @@
+---
+secureboot_signing_mok_password: "{{ mok_password }}"

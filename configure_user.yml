@@ -1,0 +1,9 @@
+---
+- name: Configure user environment
+  hosts: laptop
+  gather_facts: false
+
+  tasks:
+    - name: Include Configure User role
+      ansible.builtin.include_role:
+        name: branic.system_management.user_config

@@ -1,0 +1,19 @@
+---
+- name: Configure system settings
+  hosts: laptop
+  gather_facts: false
+
+  tasks:
+    - name: Configure secure boot signing
+      when: mok_password is defined
+      ansible.builtin.include_role:
+        name: branic.system_management.secureboot_signing
+        apply:
+          become: true
+      vars:
+        secureboot_signing_mok_password: "{{ mok_password }}"
+
+    - name: Configure System
+      ansible.builtin.import_role:
+        name: branic.system_management.system_config
+      become: true

@@ -1,0 +1,3 @@
+---
+system_config_v4l2loopback: true
+system_config_rpmfusion: "both"

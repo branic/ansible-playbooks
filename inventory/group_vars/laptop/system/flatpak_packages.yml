@@ -1,0 +1,11 @@
+---
+system_config_flatpak_packages:
+  - com.jgraph.drawio.desktop
+  - com.mattjakeman.ExtensionManager
+  # - com.slack.Slack
+  - im.riot.Riot
+  - io.podman_desktop.PodmanDesktop
+  - org.pgadmin.pgadmin4
+  - org.shotcut.Shotcut
+  # - org.videolan.VLC
+  - us.zoom.Zoom
