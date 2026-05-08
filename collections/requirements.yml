@@ -1,0 +1,5 @@
+---
+collections:
+  - name: branic.system_management
+  - name: ansible.posix
+  - name: community.general
