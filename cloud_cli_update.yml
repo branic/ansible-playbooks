@@ -6,4 +6,4 @@
   tasks:
     - name: Include Install CLIs role
       ansible.builtin.include_role:
-        name: install_cloud_clis
+        name: branic.system_management.install_cloud_clis
