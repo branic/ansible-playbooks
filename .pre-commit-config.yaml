@@ -1,8 +1,13 @@
 ---
 # pre-commit.ci configuration (https://pre-commit.ci)
 ci:
-  autofix_prs: true
+  autofix_prs: false
   autoupdate_schedule: weekly
+  skip:
+    - end-of-file-fixer
+    - trailing-whitespace
+    - ansible-lint
+    - markdownlint-cli2
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks

@@ -1,0 +1,16 @@
+---
+user_config_gnome_extensions:
+  - name: "AppIndicator and KStatusNotifierItem Support"
+    id: 615
+  - name: "Apps Menu"
+    id: 6
+  - name: "Caffeine"
+    id: 517
+  - name: "Dash to Panel"
+    id: 1160
+  - name: "Launch New Instance"
+    id: 600
+  - name: "Places Status Indicator"
+    id: 8
+  - name: "User Themes"
+    id: 19

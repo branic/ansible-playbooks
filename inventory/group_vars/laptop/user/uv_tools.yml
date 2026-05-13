@@ -1,0 +1,20 @@
+---
+user_config_uv_tools:
+  - ansible-dev-tools
+  - ansible-dev-environment
+  - ansible-core
+  - ansible-lint
+  - ansible-navigator
+  - ansible-builder
+  - ansible-creator
+  - antsibull-changelog
+  - yamllint
+  - black
+  - flake8
+  - mypy
+  - pylint
+  - pytest
+  - ruff
+  - isort
+  - poetry
+  - pre-commit

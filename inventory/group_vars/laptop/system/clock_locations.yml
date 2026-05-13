@@ -1,0 +1,13 @@
+---
+world_clock_locations:
+  - city: Chicago
+    code: KMDW
+    is_city: true
+    coords: [0.72927128935316143, -1.5316185371029443]
+    parent_coords: [0.73042086791828009, -1.529781996944241]
+  - city: Raleigh
+    code: KRDU
+    coords: [0.62605930672100707, -1.3750818938070426]
+    parent_coords: [0.62605930672100707, -1.3750818938070426]
+  - city: "Coordinated Universal Time (UTC)"
+    code: "@UTC"

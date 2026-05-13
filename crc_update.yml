@@ -1,0 +1,8 @@
+---
+- name: Update CRC
+  hosts: laptop
+
+  tasks:
+    - name: Include Update CRC role
+      ansible.builtin.include_role:
+        name: branic.system_management.openshift_local

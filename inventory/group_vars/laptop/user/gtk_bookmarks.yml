@@ -1,0 +1,8 @@
+---
+user_config_gtk_bookmarks:
+  - path: "~/projects"
+    name: Projects
+  - path: "~/private"
+    name: Private
+  - path: "~/git-repos"
+    name: Git Repositories

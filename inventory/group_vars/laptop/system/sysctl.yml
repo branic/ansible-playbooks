@@ -1,0 +1,8 @@
+---
+system_config_sysctl:
+  - name: "fs.inotify.max_user_watches"
+    value: 524288
+    sysctl_file: "/etc/sysctl.d/90-inotify.conf"
+  - name: "fs.inotify.max_user_instances"
+    value: 1024
+    sysctl_file: "/etc/sysctl.d/90-inotify.conf"

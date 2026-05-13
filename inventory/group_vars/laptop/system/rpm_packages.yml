@@ -1,0 +1,75 @@
+---
+system_config_package_replacements:
+  - remove: ffmpeg-free
+    install: ffmpeg
+  - remove: libva-intel-media-driver
+    install: intel-media-driver
+  - remove: nano-default-editor
+    install: vim-default-editor
+system_config_packages:
+  - vim-default-editor
+  # Drivers
+  - intel-media-driver
+  # Development tools
+  - cursor
+  - code
+  - meld
+  - gh
+  - glab
+  - yq
+  # Development headers and libraries
+  - krb5-devel
+  - python3-devel
+  - openldap-devel
+  # Virtualization & Container tools
+  - podman
+  - podman-compose
+  - buildah
+  - virt-manager
+  - virt-viewer
+  - virt-top
+  - virt-install
+  - libvirt
+  # Password managers
+  - enpass
+  # Browsers
+  - google-chrome-stable
+  # Cloud tools
+  - google-cloud-cli
+  - terraform
+  - packer
+  - vagrant
+  # Media codecs
+  - libva-utils
+  - gstreamer1-plugins-bad-free-extras
+  - gstreamer1-plugins-bad-freeworld
+  - gstreamer1-plugins-ugly
+  - ffmpeg
+  # Media & Graphics
+  - igt-gpu-tools
+  - gimp
+  - inkscape
+  - obs-studio
+  - darktable
+  # Utilities
+  - tmux
+  - powerline
+  - powerline-fonts
+  - vim-powerline
+  - tmux-powerline
+  - flatseal
+  - fastfetch
+  - gnome-tweaks
+  - htop
+  - atop
+  - ncdu
+  - sysstat
+  - qpdf
+  - glow
+  # Desktop utilities
+  - solaar
+  - yubikey-personalization-gui
+  # Terminals
+  - terminator
+  # Database tools
+  - sqlitebrowser
