@@ -17,6 +17,7 @@ system_config_packages:
   - gh
   - glab
   - yq
+  - nodejs24-bin
   # Development headers and libraries
   - krb5-devel
   - python3-devel
