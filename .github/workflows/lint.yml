@@ -7,6 +7,10 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -24,7 +28,14 @@ jobs:
         run: pip install ansible-core pre-commit
 
       - name: Install Ansible collections
-        run: ansible-galaxy collection install -r collections/requirements.yml
+        run: |
+          for i in 1 2 3; do
+            ansible-galaxy collection install -r collections/requirements.yml && exit 0
+            echo "Attempt $i failed, retrying in 15s..."
+            sleep 15
+          done
+          echo "All attempts failed"
+          exit 1
 
       - name: Run pre-commit
         run: pre-commit run --all-files --show-diff-on-failure
