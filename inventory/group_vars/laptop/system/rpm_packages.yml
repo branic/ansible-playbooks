@@ -22,6 +22,7 @@ system_config_packages:
   - krb5-devel
   - python3-devel
   - openldap-devel
+  - python3-ldap
   # Virtualization & Container tools
   - podman
   - podman-compose
