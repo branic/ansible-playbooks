@@ -8,6 +8,8 @@ system_config_package_replacements:
     install: vim-default-editor
 system_config_packages:
   - vim-default-editor
+  - rpmconf
+  - remove-retired-packages
   # Drivers
   - intel-media-driver
   # Development tools
