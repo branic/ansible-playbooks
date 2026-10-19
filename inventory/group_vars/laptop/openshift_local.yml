@@ -1,5 +1,5 @@
 ---
-openshift_local_crc_version: "2.51.0"
+# openshift_local_crc_version: "2.51.0"
 openshift_local_crc_config:
   preset: openshift
   consent-telemetry: "yes"
